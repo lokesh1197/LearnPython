@@ -20,7 +20,7 @@ cursor.execute("""CREATE TABLE addresses (
 # Create view function for database
 def view():
     # Create a database or connect to one
-    conn = sqlite3.connect('address_book.db')
+    conn = sqlite3.connect('public/address_book.db')
     # Create cursor
     cursor = conn.cursor()
 

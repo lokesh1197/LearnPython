@@ -1,4 +1,5 @@
 from tkinter import *
+from random import randint
 
 root = Tk()
 
@@ -21,6 +22,17 @@ def myClick():
 myButton = Button(root, text="Button", padx=50, command=myClick, fg="yellow",
         bg="green")
 myButton.pack()
+
+
+# Remove duplicates from a list
+entries = [1, 2, 3, 1, 4, 3]
+entries_set = set(entries)
+unique_entries = list(entries_set)
+
+# Pick a random entry from entries
+random_index = randint(0, len(unique_entries) - 1)
+entry_label = Label(root, text=unique_entries[random_index])
+entry_label.pack()
 
 
 root.mainloop()

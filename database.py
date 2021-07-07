@@ -1,5 +1,6 @@
 from tkinter import Tk, Entry, Label, Button, END, Toplevel, messagebox, DISABLED
 import sqlite3
+from pathlib import Path
 
 root = Tk()
 root.title("Learn about database")
@@ -20,6 +21,7 @@ cursor.execute("""CREATE TABLE addresses (
 # Create view function for database
 def view():
     # Create a database or connect to one
+    Path('public').mkdir(parents=True, exist_ok=True)
     conn = sqlite3.connect('public/address_book.db')
     # Create cursor
     cursor = conn.cursor()

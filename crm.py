@@ -3,6 +3,7 @@ from PIL import ImageTk, Image
 import mysql.connector
 import csv
 from tkinter import ttk, messagebox
+from pathlib import Path
 
 root = tk.Tk()
 root.title("CRM Database")
@@ -109,6 +110,7 @@ def add_customer():
     clear_fields()
 
 def write_to_csv(records):
+    Path('public').mkdir(parents=True, exist_ok=True)
     with open('public/customers.csv', 'w', newline="") as f:
         w = csv.writer(f, dialect='excel')
         for record in records:

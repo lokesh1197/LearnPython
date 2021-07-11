@@ -1,9 +1,9 @@
-from tkinter import Tk, LabelFrame, Button, Radiobutton, IntVar, Label, StringVar, W, messagebox, Toplevel, filedialog, Checkbutton, OptionMenu, Scale, HORIZONTAL
+from tkinter import Tk, LabelFrame, Button, Radiobutton, IntVar, Label, StringVar, W, messagebox, Toplevel, filedialog, Checkbutton, OptionMenu, Scale, HORIZONTAL, Listbox, Scrollbar
 from PIL import ImageTk, Image
 
 root = Tk()
 root.title('Learn basic widgets')
-root.geometry("800x400")
+root.geometry("800x600")
 
 # frame = LabelFrame(root, padx=5, pady=5) # padding inside the frame
 radio_frame = LabelFrame(root, text="RadioButton", padx=5, pady=5)
@@ -98,5 +98,38 @@ def open_file():
     Button(window, text="Close", command=window.destroy).pack()
 
 Button(root, text="Open Image", command=open_file).grid(row=1, column=1)
+
+listbox_frame = LabelFrame(root, text="Listbox")
+listbox_frame.grid(row=2, column=0)
+listbox_scrollbar = Scrollbar(listbox_frame, orient="vertical")
+
+# SINGLE, MULTIPLE, EXTENDED, BROWSE
+listbox = Listbox(listbox_frame, width=50, yscrollcommand=listbox_scrollbar)
+listbox.pack(pady=15)
+
+listbox_scrollbar.config(command=listbox.yview)
+listbox_scrollbar.pack(side="right", fill="y")
+
+listbox_items = ["One", "Two", "Three", "Two", "Three", "Two", "Three", "Two", "Three", "Two", "Three", "Two", "Three", "Two", "Three", "Two", "Three", "Two", "Three", "Two", "Three", "Two", "Three", "Two", "Three", "Two", "Three"]
+
+for item in listbox_items:
+    listbox.insert("end", item)
+
+
+
+def delete():
+    listbox.delete("anchor")
+    listbox_label.config(text="")
+
+def select():
+    listbox_label.config(text=listbox.get("anchor"))
+
+delete_button = Button(listbox_frame, text="Delete", command=delete)
+delete_button.pack(pady=10)
+select_button = Button(listbox_frame, text="Select", command=select)
+select_button.pack(pady=10)
+
+listbox_label = Label(listbox_frame, text='')
+listbox_label.pack(pady=5)
 
 root.mainloop()

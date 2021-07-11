@@ -16,12 +16,24 @@ e.pack()
 e.insert(0, "Enter your name...")
 
 def myClick():
+    global myButtonLabel
     myButtonLabel = Label(root, text="Hello " + e.get())
     myButtonLabel.pack()
+    myButton["state"] = "disabled"
+
+def deleteText():
+    if myButtonLabel.winfo_exists():
+        myButtonLabel.pack_forget() # .destroy() does the same thing
+        myButton["state"] = "active"
+    else:
+        print("myButtonLabel not found")
 
 myButton = Button(root, text="Button", padx=50, command=myClick, fg="yellow",
         bg="green")
 myButton.pack()
+
+deleteButton = Button(root, text="Delete", padx=50, command=deleteText)
+deleteButton.pack()
 
 
 # Remove duplicates from a list
@@ -33,6 +45,8 @@ unique_entries = list(entries_set)
 random_index = randint(0, len(unique_entries) - 1)
 entry_label = Label(root, text=unique_entries[random_index])
 entry_label.pack()
+
+# 
 
 
 root.mainloop()

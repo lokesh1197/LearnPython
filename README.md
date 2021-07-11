@@ -19,3 +19,9 @@
 ```shell
   pip install -r requirements.txt
 ```
+
+## Creating executable
+
+```shell
+  pyinstaller --onefile <python file>
+```

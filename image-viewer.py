@@ -1,9 +1,19 @@
-from tkinter import Tk, Button, Label, DISABLED, W, E, SUNKEN
+from tkinter import Tk, Button, Label, DISABLED, W, E, SUNKEN, PhotoImage
 from PIL import ImageTk, Image
+import sys, os
+
+program_directory = sys.path[0]
+
 
 root = Tk()
 root.title('Images')
-# root.iconphoto(False, '/home/lokesh/Repositories/Learn/python/gui/firstGui/images/laptop.ico')
+root.iconphoto(True, PhotoImage(file=os.path.join(program_directory, "dragon.gif")))
+# icon = Image.open('dragon.gif')
+# photo = ImageTk.PhotoImage(icon)
+# root.wm_iconphoto(False, photo)
+# root.iconbitmap('dragon.ico')
+# root.iconphoto(False, PhotoImage(file='/home/lokesh/Repositories/Learn/python/gui/firstGui/images/laptop.ico'))
+# root.tk.call('wm', 'iconphoto', root._w, ImageTk.PhotoImage(file='dragon.gif'))
 
 my_image1 = ImageTk.PhotoImage(Image.open("images/random.bmp"))
 my_image2 = ImageTk.PhotoImage(Image.open("images/laptop.ico"))

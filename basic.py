@@ -23,7 +23,7 @@ def myClick():
 
 def deleteText():
     if myButtonLabel.winfo_exists():
-        myButtonLabel.pack_forget() # .destroy() does the same thing
+        myButtonLabel.destroy() # .pack_forget() and .grid_forget() hide the widget
         myButton["state"] = "active"
     else:
         print("myButtonLabel not found")
